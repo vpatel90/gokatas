@@ -38,5 +38,5 @@ func coinChanger(amount int) []int{
 func change(amount, value int) (remaining, sumValue int) {
 	sumValue = amount / value // gets total coins of a value used
 	remaining = amount % value //gets new total after total coins used
-	return remaining, amount / value
+	return remaining, sumValue
 }
