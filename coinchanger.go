@@ -4,7 +4,19 @@ import "fmt"
 
 func main() {
 	n := 4
-	fmt.Println("Coins [1 1 1 1]:", coinChanger(n))
+	fmt.Println("Change for", n, "[1 1 1 1]:", coinChanger(n))
+
+	n = 99
+	fmt.Println("Change for", n, "[25 25 25 10 10 1 1 1 1]:", coinChanger(n))
+
+	n = 17
+	fmt.Println("Change for", n, "[10 5 1 1]:", coinChanger(n))
+
+	n = 6
+	fmt.Println("Change for", n, "[5 1]:", coinChanger(n))
+
+	n = 33
+	fmt.Println("Change for", n, "[25 5 1 1 1]:", coinChanger(n))
 }
 
 func coinChanger(amount int) []int{
@@ -14,7 +26,7 @@ func coinChanger(amount int) []int{
 	for _,element := range values {
 		remaining, sumValue := change(amount, element)
 		amount = remaining
-		
+
 		for i := 1; i <= sumValue; i++ {
 			coins = append(coins, element)
 		}
