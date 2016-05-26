@@ -39,23 +39,21 @@ What is the largest prime factor of the number 600851475143 ?
 */
 
 	maxNum := 0
-	n := 0
-	fmt.Println("This part will take FOREVER! -  comment this out if you want to see rest of the stuff")
-	for i := 600851475143/2; i > 0; i-= 2 {
-		n ++ 
-		if n % 100000000 == 0 {
-			fmt.Println("On number", i, " :", time.Now().Format("15:04:05"))
-		}
+	t := time.Now()
+
+	for i := int(math.Sqrt(600851475143)); i > 0; i-= 1 {
+
 		if 600851475143 % i == 0 {
-			fmt.Println("Found a Factor! Checking to see if its a Prime...")
 			if checkPrime(i) {
 				maxNum = i
-				fmt.Println(maxNum)
 				break
 			}
 		}
 	}
+	fmt.Println("End Time"," :", time.Since(t))
+
 	fmt.Println(maxNum)
+
 
 }
 
