@@ -2,6 +2,10 @@ package main
 
 import "fmt"
 
+import "time"
+
+import "math"
+
 
 func main () {
 
@@ -25,6 +29,52 @@ By considering the terms in the Fibonacci sequence whose values do not exceed fo
 			sum_evens += element
 		}
 	}
-	fmt.Println(sum_evens)
+	fmt.Println("2 sum of even fibonacci numbers < 4 million:", sum_evens)
 
+
+/*
+The prime factors of 13195 are 5, 7, 13 and 29.
+
+What is the largest prime factor of the number 600851475143 ?
+*/
+
+	maxNum := 0
+	n := 0
+	fmt.Println("This part will take FOREVER! -  comment this out if you want to see rest of the stuff")
+	for i := 600851475143/2; i > 0; i-= 2 {
+		n ++ 
+		if n % 100000000 == 0 {
+			fmt.Println("On number", i, " :", time.Now().Format("15:04:05"))
+		}
+		if 600851475143 % i == 0 {
+			fmt.Println("Found a Factor! Checking to see if its a Prime...")
+			if checkPrime(i) {
+				maxNum = i
+				fmt.Println(maxNum)
+				break
+			}
+		}
+	}
+	fmt.Println(maxNum)
+
+}
+
+
+func checkPrime(num int) bool{
+	//math is hard
+	isPrime := true
+	if num % 3 == 0 || num % 5 == 0 {
+		isPrime = false
+		return isPrime
+	}
+	
+	for n := num/2 ; n > 1; n-- {
+		if num % n != 0 {
+			isPrime = true
+		}else {
+			isPrime = false
+			break
+		}
+	}
+	return isPrime
 }
